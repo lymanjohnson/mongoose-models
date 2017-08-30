@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const boxSchema = new mongoose.Schema({
     name: { type: String, required: true, unique: true },
-    material: [String],
+    materials: [String],
     quality: {type: String, required: true, enum:["Shabby","Competent","High Quality","Masterwork"]},
     descriptors: [String],
     contents: [{item: String, quantity: Number}]

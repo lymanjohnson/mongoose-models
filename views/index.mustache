@@ -8,14 +8,60 @@
      <meta name="author" content="Lyman Johnson" />
      <meta name="HandheldFriendly" content="true" />
      <meta name="MobileOptimized" content="320" />
-     <!-- Use maximum-scale and user-scalable at your own risk. It disables pinch/zoom. Think about usability/accessibility before including.-->
-     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> -->
-     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
      <link rel="stylesheet" type="text/css" href="style.css">
    </head>
    <body>
 
-     <p>Index Page</p>
+     <h1>Recipes</h1>
+
+     <p>
+       <a href="/new/">Add new box</a>
+     </p>
+
+     {{#boxes}}
+       <div class="box">
+       <h2>
+         <a href="/{{_id}}">
+           {{name}}
+         </a>
+       </h2>
+       <dl>
+       {{#material}}
+       <dt>
+         Material
+       </dt>
+       <dd>
+         {{.}}
+       </dd>
+       {{/material}}
+       {{#quality}}
+       <dt>
+         quality
+       </dt>
+       <dd>
+         {{.}}
+       </dd>
+       {{/quality}}
+       {{#descriptors}}
+       <dt>
+         Descriptors
+       </dt>
+       <dd>
+         {{.}}
+       </dd>
+       {{/descriptors}}
+       {{#contents}}
+       <dt>
+         Contents
+       </dt>
+       <dd>
+         {{.}}
+       </dd>
+       {{/contents}}
+       </dl>
+       </div>
+     {{/boxes}}
+
 
 
    <script type="text/javascript" src="main.js"></script>

@@ -18,23 +18,27 @@
 <body>
 
   <form action="/new" method="post">
-    <input type="text" name="name" required autofocus placeholder="Cheap Cigar Box">
-    <input type="text" name="material" required placeholder="Cardboard">
-    <input type="radio" name="quality" value="shabby">
-    <input type="radio" name="quality" value="Competent">
-    <input type="radio" name="quality" value="High Quality">
-    <input type="radio" name="quality" value="Masterwork">
+    <span>Give Your Box a Unique, Descriptive Name:<input type="text" name="name" required autofocus></span>
+    <br>
+    <span>Box's Construction Materials:<input type="text" name="material" required></span>
+    <br>
+    <ul>Box's Construction Quality:
+      <li><input type="radio" name="quality" value="shabby">Shabby</input>
+      </li>
+      <li><input type="radio" name="quality" value="Competent">Competent</input>
+      </li>
+      <li><input type="radio" name="quality" value="High Quality">High Quality</input>
+      </li>
+      <li><input type="radio" name="quality" value="Masterwork">Masterwork</input>
+      </li>
+    </ul>
+    <span>Description:<input type="text" name="descriptors" required></input></span>
+    <br>
+    <span>Box's Contents:<input type="text" name="contentsItem"> Qt.:<input type="number" name="contentsNumber"></input></span>
+    <br>
+    <button action="/new" type="submit">Add Box to Collection</button>
   </form>
 
-
-  <!--
-       <button type="submit" name="difficulty" value="easy">New Easy Word</button>
-       <button type="submit" name="difficulty" value="medium">New Medium Word</button>
-       <button type="submit" name="difficulty" value="hard">New Hard Word</button> -->
-  <button type="submit">Add Box to Collection</button>
-  </form>
-
-  <!-- <script type="text/javascript" src="main.js"></script> -->
 </body>
 
 </html>
