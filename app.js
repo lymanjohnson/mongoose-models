@@ -30,6 +30,46 @@ app.set('view engine', 'mustache');
 
 app.use(express.static(__dirname + '/public'));
 
-app.get('/new/',function{
+app.get('/',function(req,res){
+  res.render("index");
+})
+
+app.get('/new/',function(req,res){
   res.render("new");
 })
+
+app.post('/new/', function(req,res){
+  Box.create(req.body)
+  .then(function (box){
+    res.redirect('/');
+  })
+  .catch(function (error) {
+    let errorMsg;
+    if (error.code === DUPLICATE_RECORD_ERROR) {
+      errorMsg = `The box name "${req.body.name}" has already been used.`
+    } else {
+      errorMsg = "You have encountered an unknown error."
+    }
+    res.render('new', {errorMsg : errorMsg});
+  })
+})
+
+
+
+
+// app.post('/new/', function (req, res) {
+//   Recipe.create(req.body)
+//   .then(function (recipe) {
+//     res.redirect('/');
+//   })
+//   .catch(function (error) {
+//     let errorMsg;
+//     if (error.code === DUPLICATE_RECORD_ERROR) {
+//       // make message about duplicate
+//       errorMsg = `The recipe name "${req.body.name}" has already been used.`
+//     } else {
+//       errorMsg = "You have encountered an unknown error."
+//     }
+//     res.render('new_recipe', {errorMsg: errorMsg});
+//   })
+// });
