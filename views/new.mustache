@@ -15,7 +15,20 @@
    </head>
    <body>
 
-     <p> New Recipe Addition Screen Here</p>
+     <form action="/new" method="post">
+       <input type="text" name="name" required autofocus placeholder="Cheap Cigar Box">
+       <input type="text" name="material" required placeholder="Cardboard">
+       <input type="radio" name="quality"
+
+["Shabby","Competent","High Quality","Masterwork"]
+
+
+       <!--
+       <button type="submit" name="difficulty" value="easy">New Easy Word</button>
+       <button type="submit" name="difficulty" value="medium">New Medium Word</button>
+       <button type="submit" name="difficulty" value="hard">New Hard Word</button> -->
+       <button type="submit">Add Box to Collection</button>
+     </form>
 
    <!-- <script type="text/javascript" src="main.js"></script> -->
    </body>

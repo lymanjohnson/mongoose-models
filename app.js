@@ -9,7 +9,7 @@ const Box = require("./models/box.js");
 
 const DUPLICATE_RECORD_ERROR = 11000;
 
-const mongoURL = 'mongodb://localhost:27017/recipes';
+const mongoURL = 'mongodb://localhost:27017/mongooseSchema';
 mongoose.connect(mongoURL, {useMongoClient: true});
 mongoose.Promise = require('bluebird');
 
@@ -31,6 +31,7 @@ app.set('view engine', 'mustache');
 app.use(express.static(__dirname + '/public'));
 
 app.get('/',function(req,res){
+  console.log("got to get/");
   res.render("index");
 })
 
@@ -54,7 +55,9 @@ app.post('/new/', function(req,res){
   })
 })
 
-
+app.listen(3000, function () {
+	  console.log('Successfully started express application!');
+})
 
 
 // app.post('/new/', function (req, res) {
