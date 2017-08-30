@@ -1,18 +1,13 @@
 const mongoose = require('mongoose');
 
-const episodeSchema = new mongoose.Schema({
+const boxSchema = new mongoose.Schema({
     name: { type: String, required: true, unique: true },
-    seasonNumber: { type: Number, required: true, default: 1 },
-    episodeNumber: { type: Number, required: true, default: 1 },
-    guestStars: [{
-        name: { type: String, required: true },
-        role: { type: String, required: true },
-        timeCodeAppearancesInSeconds: [{ type: Number, required: true , default: 0 }]
-    }],
-    cast: [String]
-    // source: , {type: String}
+    material: [{ type: Number}],
+    quality: {type: String, required: true, enum:{"Shabby","Competent","High Quality","Masterwork"}},
+    descriptors: [String],
+    contents: [{item: String, quantity: Number}]
 })
 
-const Episode = mongoose.model('Episode', episodeSchema);
+const Box = mongoose.model('Box', boxSchema);
 
-module.exports = Episode;
+module.exports = Box;
