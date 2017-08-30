@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.engine('mustache', mustacheExpress());
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'mustache')
+app.set('view engine', 'mustache');
 
 /*  WHAT ARE THESE?  */
 
@@ -30,6 +30,6 @@ app.set('view engine', 'mustache')
 
 app.use(express.static(__dirname + '/public'));
 
-
-app.get('/new/')
-  res.render("new_box")
+app.get('/new/',function{
+  res.render("new");
+})
