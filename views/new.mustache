@@ -17,12 +17,19 @@
 
 <body>
 
-  <form action="/new" method="post">
-    <span>Give Your Box a Unique, Descriptive Name:<input type="text" name="name" required autofocus></span>
+  <form action="/new/" method="post">
+
+    <label for="name">Give Your Box a Unique, Descriptive Name:</label>
+      <input type="text" name="name" required autofocus>
+
     <br>
-    <span>Box's Construction Materials:<input type="text" name="material" required></span>
+
+    <label for="material">Box's Construction Materials:</label>
+    <input type="text" name="material" required>
+
     <br>
-    <ul>Box's Construction Quality:
+    <label for="quality">Box's Construction Quality:<label>
+    <ul>
       <li><input type="radio" name="quality" value="shabby">Shabby</input>
       </li>
       <li><input type="radio" name="quality" value="Competent">Competent</input>
@@ -32,11 +39,18 @@
       <li><input type="radio" name="quality" value="Masterwork">Masterwork</input>
       </li>
     </ul>
-    <span>Description:<input type="text" name="descriptors" required></input></span>
+
+    <label for="descriptors">Description:</label>
+    <input type="text" name="descriptors" required></input>
+
     <br>
-    <span>Box's Contents:<input type="text" name="contentsItem"> Qt.:<input type="number" name="contentsNumber"></input></span>
+
+    <label for="contentsItem">Box's Contents:</label><input type="text" name="contentsItem">
+
+    <label for=contentsNumber>Qt.:</label>
+    <input type="number" name="contentsNumber"></input>
     <br>
-    <button action="/new" type="submit">Add Box to Collection</button>
+    <button type="submit">Add Box to Collection</button>
   </form>
 
 </body>
