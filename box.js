@@ -1,4 +1,3 @@
-// ./show.js
 const mongoose = require('mongoose');
 
 const episodeSchema = new mongoose.Schema({
