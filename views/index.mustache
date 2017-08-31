@@ -1,69 +1,47 @@
 <!DOCTYPE html>
- <html>
-   <head>
-     <meta charset="utf-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <title></title>
-     <meta name="description" content="" />
-     <meta name="author" content="Lyman Johnson" />
-     <meta name="HandheldFriendly" content="true" />
-     <meta name="MobileOptimized" content="320" />
-     <link rel="stylesheet" type="text/css" href="style.css">
-   </head>
-   <body>
+<html>
 
-     <h1>Recipes</h1>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="" />
+  <meta name="author" content="Lyman Johnson" />
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="320" />
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
 
-     <p>
-       <a href="/new/">Add new box</a>
-     </p>
+<body>
 
-     {{#boxes}}
-       <div class="box">
-       <h2>
-         <a href="/{{_id}}">
-           {{name}}
-         </a>
-       </h2>
-       <dl>
-       {{#material}}
-       <dt>
-         Material
-       </dt>
-       <dd>
-         {{.}}
-       </dd>
-       {{/material}}
-       {{#quality}}
-       <dt>
-         quality
-       </dt>
-       <dd>
-         {{.}}
-       </dd>
-       {{/quality}}
-       {{#descriptors}}
-       <dt>
-         Descriptors
-       </dt>
-       <dd>
-         {{.}}
-       </dd>
-       {{/descriptors}}
-       {{#contents}}
-       <dt>
-         Contents
-       </dt>
-       <dd>
-         {{.}}
-       </dd>
-       {{/contents}}
-       </dl>
-       </div>
-     {{/boxes}}
+  <h1>Recipes</h1>
+
+  <p>
+    <a href="/new/">Add new box</a>
+  </p>
+  {{#box}}
+    <a href="/item/{{_id}}"><h2>{{name}}</h2></a>
+    <h3>Materials:</h3>
+    {{#materials}}
+      <p>{{.}}</p>
+    {{/materials}}
+    <h3>Quality</h3>
+    <p>{{quality}}</p>
+    <h3>Descriptors</h3>
+    {{#descriptors}}
+      <p>{{.}}</p>
+    {{/descriptors}}
+    <h3>Contents:</h3>
+    <p>{{contents}}</p>
+    {{#contents}}
+      <p>{{.}}</p>
+    {{/contents}}
+
+  {{/box}}
 
 
 
-   <script type="text/javascript" src="main.js"></script>
-   </body>
- </html>
+  <script type="text/javascript" src="main.js"></script>
+</body>
+
+</html>

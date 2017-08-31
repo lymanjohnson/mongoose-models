@@ -9,7 +9,7 @@ const Box = require("./models/box.js");
 
 const DUPLICATE_RECORD_ERROR = 11000;
 
-const mongoURL = 'mongodb://localhost:27017/mongooseSchema';
+const mongoURL = 'mongodb://localhost:27017/boxdb';
 mongoose.connect(mongoURL, {useMongoClient: true});
 mongoose.Promise = require('bluebird');
 
@@ -31,34 +31,53 @@ app.set('view engine', 'mustache');
 app.use(express.static(__dirname + '/public'));
 
 app.get('/',function(req,res){
-  console.log("got to get/");
-  res.render("index");
+  Box.find().then(function(box){
+    res.render("index",{box:box});
+  })
 })
 
 app.get('/new/',function(req,res){
   res.render("new");
 })
 
-app.post('/new/', function(req,res){
+/*
+Recipe.findOne({_id: req.params.id}).then(function (recipe) {
+  recipe.steps.push(req.body.step);
+  recipe.save().then(function () {
+    res.render("new_step", {recipe: recipe});
+*/
+
+app.post('/new/', function (req, res) {
   Box.create(req.body)
-  .then(function (box){
-    res.redirect('/');
+  .then(function (box) {
+    Box.findOneAndUpdate({name: req.params.name},{$push: {contents: {req.params.contentsItem,req.params.contentsQuantity}}})
+    .then(
+      res.redirect('/')
+    )
+
+    // var newContent = {"item": req.body.contentsItem, "quantity": req.body.contentsQuantity};
+    // console.log(req.body.contentsItem,req.body.contentsQuantity);
+    // console.log(newContent);
+    // boxes.findOneAndUpdate({name: req.user.name}, {$push: {contents: newContent}});
+    // res.redirect('/');
   })
   .catch(function (error) {
     let errorMsg;
     if (error.code === DUPLICATE_RECORD_ERROR) {
-      errorMsg = `The box name "${req.body.name}" has already been used.`
+      // make message about duplicate
+      errorMsg = `The recipe name "${req.body.name}" has already been used.`
     } else {
       errorMsg = "You have encountered an unknown error."
     }
-    res.render('new', {errorMsg : errorMsg});
+    res.render('new', {errorMsg: errorMsg});
   })
-})
+});
 
 app.listen(3000, function () {
 	  console.log('Successfully started express application!');
 })
 
+module.exports = app;
 
 // app.post('/new/', function (req, res) {
 //   Recipe.create(req.body)
