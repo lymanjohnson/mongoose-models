@@ -17,5 +17,4 @@ const Box = mongoose.model('Box', boxSchema);
 // boxes.findOneAndUpdate({name: req.user.name}, {$push: {contents: newContent}});
 // };
 
-
 module.exports = Box;

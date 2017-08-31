@@ -14,14 +14,13 @@
 
 <body>
 
-
   <h1>Beautiful Boxes</h1>
 
   <p>
     <a href="/new/">Add new box</a>
   </p>
+  {{#box}}
     <a href="/item/{{_id}}"><h2>{{name}}</h2></a>
-{{#box}}
     <h3>Materials:</h3>
     {{#materials}}
       <p>{{.}}</p>
@@ -37,7 +36,9 @@
     {{#contents}}
       <p>{{.}}</p>
     {{/contents}}
+
   {{/box}}
+
 
 
   <script type="text/javascript" src="main.js"></script>

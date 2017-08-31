@@ -40,6 +40,13 @@ app.get('/new/',function(req,res){
   res.render("new");
 })
 
+app.get('/box/:id',function(req,res){
+  boxes.findOne({_id: req.params.id})
+  .then(function(box){
+  res.render("box",{box:box})}
+  )
+})
+
 /*
 Recipe.findOne({_id: req.params.id}).then(function (recipe) {
   recipe.steps.push(req.body.step);
@@ -49,18 +56,23 @@ Recipe.findOne({_id: req.params.id}).then(function (recipe) {
 
 app.post('/new/', function (req, res) {
   Box.create(req.body)
-  .then(function (box) {
-    Box.findOneAndUpdate({name: req.params.name},{$push: {contents: {req.params.contentsItem,req.params.contentsQuantity}}})
-    .then(
-      res.redirect('/')
-    )
+    .then(function (box) {
+      var newContent = {"item":req.body.contentsItem,"quantity":req.body.contentsQuantity}
+      console.log(newContent);
+      console.log(box.toObject());
+      box.contents.push(newContent);
+      box.save().then(
+      res.redirect('/'))
+    })
 
-    // var newContent = {"item": req.body.contentsItem, "quantity": req.body.contentsQuantity};
-    // console.log(req.body.contentsItem,req.body.contentsQuantity);
-    // console.log(newContent);
-    // boxes.findOneAndUpdate({name: req.user.name}, {$push: {contents: newContent}});
-    // res.redirect('/');
-  })
+  // let newContent = {name:req.body.contentsItem,quantity:req.body.contentsQuantity};
+  // Box.create(req.body)
+  // .then(function (box) {
+  //   box.contents.push(newContent);
+  //   box.save().then(
+  //     res.redirect('/')
+  //   )
+  // })
   .catch(function (error) {
     let errorMsg;
     if (error.code === DUPLICATE_RECORD_ERROR) {
