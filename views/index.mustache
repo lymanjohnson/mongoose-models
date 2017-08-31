@@ -22,6 +22,7 @@
   </p>
     <a href="/item/{{_id}}"><h2>{{name}}</h2></a>
 {{#box}}
+<h2>{{name}}</h2>
     <h3>Materials:</h3>
     {{#materials}}
       <p>{{.}}</p>
@@ -33,10 +34,10 @@
       <p>{{.}}</p>
     {{/descriptors}}
     <h3>Contents:</h3>
-    <p>{{contents}}</p>
     {{#contents}}
-      <p>{{.}}</p>
+      <p>{{quantity}} {{item}}</p>
     {{/contents}}
+    <hr>
   {{/box}}
 
 
